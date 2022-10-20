@@ -11,7 +11,7 @@ import SwiftUI
 struct Rocket_Focus_2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(timerHandler: TimerHandler())
         }
     }
 }

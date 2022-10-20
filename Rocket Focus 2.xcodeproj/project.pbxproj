@@ -14,6 +14,10 @@
 		B77CB9BE290141DB00C256A1 /* Rocket_Focus_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9BD290141DB00C256A1 /* Rocket_Focus_2Tests.swift */; };
 		B77CB9C8290141DB00C256A1 /* Rocket_Focus_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9C7290141DB00C256A1 /* Rocket_Focus_2UITests.swift */; };
 		B77CB9CA290141DB00C256A1 /* Rocket_Focus_2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9C9290141DB00C256A1 /* Rocket_Focus_2UITestsLaunchTests.swift */; };
+		B77CB9D82901691300C256A1 /* TimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9D72901691300C256A1 /* TimeHandler.swift */; };
+		B77CB9DA2901693700C256A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9D92901693700C256A1 /* Constants.swift */; };
+		B77CB9DC290169AB00C256A1 /* Int+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9DB290169AB00C256A1 /* Int+Additions.swift */; };
+		B77CB9DE290169BA00C256A1 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,11 @@
 		B77CB9C3290141DB00C256A1 /* Rocket Focus 2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rocket Focus 2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77CB9C7290141DB00C256A1 /* Rocket_Focus_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket_Focus_2UITests.swift; sourceTree = "<group>"; };
 		B77CB9C9290141DB00C256A1 /* Rocket_Focus_2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket_Focus_2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B77CB9D629014F2A00C256A1 /* TheRocketLab.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TheRocketLab.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B77CB9D72901691300C256A1 /* TimeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHandler.swift; sourceTree = "<group>"; };
+		B77CB9D92901693700C256A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B77CB9DB290169AB00C256A1 /* Int+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Additions.swift"; sourceTree = "<group>"; };
+		B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +83,7 @@
 		B77CB9A0290141DA00C256A1 = {
 			isa = PBXGroup;
 			children = (
+				B77CB9D629014F2A00C256A1 /* TheRocketLab.playground */,
 				B77CB9AB290141DA00C256A1 /* Rocket Focus 2 */,
 				B77CB9BC290141DB00C256A1 /* Rocket Focus 2Tests */,
 				B77CB9C6290141DB00C256A1 /* Rocket Focus 2UITests */,
@@ -96,6 +106,10 @@
 			children = (
 				B77CB9AC290141DA00C256A1 /* Rocket_Focus_2App.swift */,
 				B77CB9AE290141DA00C256A1 /* ContentView.swift */,
+				B77CB9D72901691300C256A1 /* TimeHandler.swift */,
+				B77CB9D92901693700C256A1 /* Constants.swift */,
+				B77CB9DB290169AB00C256A1 /* Int+Additions.swift */,
+				B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */,
 				B77CB9B0290141DA00C256A1 /* Assets.xcassets */,
 				B77CB9B2290141DA00C256A1 /* Preview Content */,
 			);
@@ -257,8 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77CB9D82901691300C256A1 /* TimeHandler.swift in Sources */,
 				B77CB9AF290141DA00C256A1 /* ContentView.swift in Sources */,
+				B77CB9DC290169AB00C256A1 /* Int+Additions.swift in Sources */,
+				B77CB9DE290169BA00C256A1 /* TimeInterval+Additions.swift in Sources */,
 				B77CB9AD290141DA00C256A1 /* Rocket_Focus_2App.swift in Sources */,
+				B77CB9DA2901693700C256A1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
