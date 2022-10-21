@@ -8,19 +8,17 @@
 import Foundation
 import Combine
 
-/* This is to handle any session time in minutes
- This should:
- - Start a timer with any time
- - Count down to the end of duration set and finish
- - Can be setup again
- - Seconds left can be observed
- */
-
 class TimerHandler: ObservableObject {
     @Published var secondsLeft = 0
     private var cancellableTimer: Cancellable?
     private let timerPublusher = Timer.publish(every: 1, on: .main, in: .common)
     var startDate: Date?
+    let userDefaults: any UserDefaultable
+    
+    internal init(userDefaults: any UserDefaultable = UserRepository()) {
+        self.userDefaults = userDefaults
+    }
+    
 
     // MARK: - Public
     public func startTimer(duration: Int = Constants.pomodoroWorkMinutes.minutesInSeconds) {
@@ -53,10 +51,41 @@ class TimerHandler: ObservableObject {
         }
         secondsLeft -= 1
         print("Seconds left \(secondsLeft)")
-        
     }
+    
+    //Saves the date so that it can be resumed when coming out of lock with the correct time
+    func suspendTimer() {
+        cancellableTimer = nil
+        userDefaults.removeDate()
+        
+        guard let date = startDate else { return }
+        userDefaults.saveDate(forKey: .lockDate, date: date)
+        let retrievedDate = userDefaults.readDate(forKey: .lockDate)
+        print("retrieved \(String(describing: retrievedDate))")
+    }
+    
+    func resumeTimer() {
+        guard let retrievedDate = userDefaults.readDate(forKey: .lockDate) else {
+            return
+        }
+        let presetDuration = Constants.pomodoroWorkMinutes.minutesInSeconds
+        let timePassedInSeconds = Date().timeIntervalSince(retrievedDate)
+        let newSecondsLeft = presetDuration - Int(timePassedInSeconds)
+        print(newSecondsLeft)
+        startTimer(duration: newSecondsLeft)
+    }
+    
+    
 }
 
-extension Optional {
-    var isNotNil: Bool { self != nil }
+protocol UserDefaultable {
+    func saveValue(forKey key: StorageKey, value: Any)
+    func readValue<T>(forKey key: StorageKey) -> T?
+    func saveDate(forKey key: StorageKey, date: Date)
+    func readDate(forKey key: StorageKey) -> Date?
+    func removeDate()
+}
+
+enum StorageKey: String, CaseIterable {
+    case lockDate
 }

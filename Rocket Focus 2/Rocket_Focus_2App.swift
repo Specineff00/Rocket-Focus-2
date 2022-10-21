@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import Then
 
 @main
 struct Rocket_Focus_2App: App {
+    let deviceEventObserver = DeviceEventObserver().then { $0.setupObservers() }
+        
     var body: some Scene {
         WindowGroup {
-            ContentView(timerHandler: TimerHandler())
+            ContentView(
+                timerHandler: TimerHandler(
+                    userDefaults: UserRepository()
+                )
+            )
         }
     }
 }

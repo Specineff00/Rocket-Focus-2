@@ -4,9 +4,16 @@ import Combine
 
 
 
-let ttt = TimerHandler()
-ttt.startTimer()
+let timerHandler = TimerHandler()
+timerHandler.startTimer()
 
 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-    ttt.cancelTimer()
+//    timerHandler.cancelTimer()
+    timerHandler.suspendTimer()
 }
+
+DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+//    timerHandler.cancelTimer()
+    timerHandler.resumeTimer()
+}
+

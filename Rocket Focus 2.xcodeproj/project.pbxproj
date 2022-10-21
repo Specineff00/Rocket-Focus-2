@@ -18,6 +18,10 @@
 		B77CB9DA2901693700C256A1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9D92901693700C256A1 /* Constants.swift */; };
 		B77CB9DC290169AB00C256A1 /* Int+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9DB290169AB00C256A1 /* Int+Additions.swift */; };
 		B77CB9DE290169BA00C256A1 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */; };
+		B77CB9E12902F9B700C256A1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B77CB9E02902F9B700C256A1 /* Then */; };
+		B77CB9E32902FB2600C256A1 /* DeviceEventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */; };
+		B77CB9E52903126000C256A1 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E42903126000C256A1 /* UserRepository.swift */; };
+		B77CB9E72903129D00C256A1 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E62903129D00C256A1 /* TimerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,9 @@
 		B77CB9D92901693700C256A1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B77CB9DB290169AB00C256A1 /* Int+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Additions.swift"; sourceTree = "<group>"; };
 		B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
+		B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEventObserver.swift; sourceTree = "<group>"; };
+		B77CB9E42903126000C256A1 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		B77CB9E62903129D00C256A1 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77CB9E12902F9B700C256A1 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +114,10 @@
 			children = (
 				B77CB9AC290141DA00C256A1 /* Rocket_Focus_2App.swift */,
 				B77CB9AE290141DA00C256A1 /* ContentView.swift */,
+				B77CB9E62903129D00C256A1 /* TimerViewModel.swift */,
+				B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */,
 				B77CB9D72901691300C256A1 /* TimeHandler.swift */,
+				B77CB9E42903126000C256A1 /* UserRepository.swift */,
 				B77CB9D92901693700C256A1 /* Constants.swift */,
 				B77CB9DB290169AB00C256A1 /* Int+Additions.swift */,
 				B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */,
@@ -157,6 +168,9 @@
 			dependencies = (
 			);
 			name = "Rocket Focus 2";
+			packageProductDependencies = (
+				B77CB9E02902F9B700C256A1 /* Then */,
+			);
 			productName = "Rocket Focus 2";
 			productReference = B77CB9A9290141DA00C256A1 /* Rocket Focus 2.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +243,9 @@
 				Base,
 			);
 			mainGroup = B77CB9A0290141DA00C256A1;
+			packageReferences = (
+				B77CB9DF2902F9B700C256A1 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = B77CB9AA290141DA00C256A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,10 +289,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B77CB9D82901691300C256A1 /* TimeHandler.swift in Sources */,
+				B77CB9E72903129D00C256A1 /* TimerViewModel.swift in Sources */,
 				B77CB9AF290141DA00C256A1 /* ContentView.swift in Sources */,
 				B77CB9DC290169AB00C256A1 /* Int+Additions.swift in Sources */,
 				B77CB9DE290169BA00C256A1 /* TimeInterval+Additions.swift in Sources */,
+				B77CB9E32902FB2600C256A1 /* DeviceEventObserver.swift in Sources */,
 				B77CB9AD290141DA00C256A1 /* Rocket_Focus_2App.swift in Sources */,
+				B77CB9E52903126000C256A1 /* UserRepository.swift in Sources */,
 				B77CB9DA2901693700C256A1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +621,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B77CB9DF2902F9B700C256A1 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B77CB9E02902F9B700C256A1 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B77CB9DF2902F9B700C256A1 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B77CB9A1290141DA00C256A1 /* Project object */;
 }
