@@ -4,16 +4,59 @@ import Combine
 
 
 
-let timerHandler = TimerHandler()
-timerHandler.startTimer()
+//let timerHandler = TimerHandler()
+//timerHandler.startTimer()
+//
+//DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+////    timerHandler.cancelTimer()
+//    timerHandler.suspendTimer()
+//}
+//
+//DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+////    timerHandler.cancelTimer()
+//    timerHandler.resumeTimer()
+//}
 
-DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//    timerHandler.cancelTimer()
-    timerHandler.suspendTimer()
+struct ChatRoom {
+    enum Error: Swift.Error {
+        case missingConnection
+    }
+    let subject = PassthroughSubject<String, Error>()
+    
+    func simulateMessage() {
+        subject.send("Hello!")
+    }
+    
+    func simulateNetworkError() {
+        subject.send(completion: .failure(.missingConnection))
+    }
+    
+    func closeRoom() {
+        subject.send("Chat room closed")
+        subject.send(completion: .finished)
+    }
 }
 
-DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-//    timerHandler.cancelTimer()
-    timerHandler.resumeTimer()
+let chatRoom = ChatRoom()
+chatRoom.subject.sink { completion in
+    switch completion {
+    case .finished:
+        print("Received finished")
+    case .failure(let error):
+        print("Received error: \(error)")
+    }
+} receiveValue: { message in
+    print("Received message: \(message)")
 }
+chatRoom.simulateMessage()
+chatRoom.closeRoom()
+
+let dvo = DeviceEventObserver()
+
+let locky = dvo.isLockedSubject.sink { completion in
+    print(completion)
+} receiveValue: { message in
+    print("Received message: \(message)")
+}
+
 

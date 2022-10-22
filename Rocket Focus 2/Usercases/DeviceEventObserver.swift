@@ -12,6 +12,7 @@ import SwiftUI
 class DeviceEventObserver: NSObject, ObservableObject {
     @Published var isDeviceLocked = false
     @Published var isAppActive = true
+    let isLockedSubject = PassthroughSubject<Bool, Never>()
     
     private var notificationCancellable: Cancellable?
     private var unlockCancellable: Cancellable?
@@ -38,14 +39,21 @@ class DeviceEventObserver: NSObject, ObservableObject {
         unlockCancellable = nil
         unlockCancellable = NotificationCenter.default
             .publisher(for:  UIApplication.protectedDataDidBecomeAvailableNotification)
-            .sink() { [weak self] _ in self?.isDeviceLocked = false }
+            .sink() {
+                [weak self] _ in self?.isDeviceLocked = false
+                print("unlocked")
+                self?.isLockedSubject.send(false)
+            }
     }
     
     private func addDeviceLockedObserver() {
         lockCancellable = nil
         lockCancellable = NotificationCenter.default
             .publisher(for:  UIApplication.protectedDataWillBecomeUnavailableNotification)
-            .sink() { [weak self] _ in self?.isDeviceLocked = true }
+            .sink() { [weak self] _ in self?.isDeviceLocked = true
+                print("locked")
+                self?.isLockedSubject.send(true)
+            }
     }
     
     private func addDeviceResignedActiveObserver() {

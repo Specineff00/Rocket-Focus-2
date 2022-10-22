@@ -20,8 +20,12 @@
 		B77CB9DE290169BA00C256A1 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */; };
 		B77CB9E12902F9B700C256A1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B77CB9E02902F9B700C256A1 /* Then */; };
 		B77CB9E32902FB2600C256A1 /* DeviceEventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */; };
-		B77CB9E52903126000C256A1 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E42903126000C256A1 /* UserRepository.swift */; };
+		B77CB9E52903126000C256A1 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E42903126000C256A1 /* UserDefaultsRepository.swift */; };
 		B77CB9E72903129D00C256A1 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9E62903129D00C256A1 /* TimerViewModel.swift */; };
+		B77CB9F32903196F00C256A1 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9F22903196F00C256A1 /* AppDependencyContainer.swift */; };
+		B77CB9F729031E5300C256A1 /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77CB9F629031E5300C256A1 /* StorageKey.swift */; };
+		B77CB9FC2903222700C256A1 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = B77CB9FB2903222700C256A1 /* Swinject */; };
+		B77CB9FF2903223700C256A1 /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = B77CB9FE2903223700C256A1 /* SwinjectAutoregistration */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +62,10 @@
 		B77CB9DB290169AB00C256A1 /* Int+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Additions.swift"; sourceTree = "<group>"; };
 		B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEventObserver.swift; sourceTree = "<group>"; };
-		B77CB9E42903126000C256A1 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		B77CB9E42903126000C256A1 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
 		B77CB9E62903129D00C256A1 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		B77CB9F22903196F00C256A1 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
+		B77CB9F629031E5300C256A1 /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B77CB9E12902F9B700C256A1 /* Then in Frameworks */,
+				B77CB9FC2903222700C256A1 /* Swinject in Frameworks */,
+				B77CB9FF2903223700C256A1 /* SwinjectAutoregistration in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,16 +121,15 @@
 			isa = PBXGroup;
 			children = (
 				B77CB9AC290141DA00C256A1 /* Rocket_Focus_2App.swift */,
+				B77CB9B0290141DA00C256A1 /* Assets.xcassets */,
+				B77CB9D92901693700C256A1 /* Constants.swift */,
 				B77CB9AE290141DA00C256A1 /* ContentView.swift */,
 				B77CB9E62903129D00C256A1 /* TimerViewModel.swift */,
-				B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */,
-				B77CB9D72901691300C256A1 /* TimeHandler.swift */,
-				B77CB9E42903126000C256A1 /* UserRepository.swift */,
-				B77CB9D92901693700C256A1 /* Constants.swift */,
-				B77CB9DB290169AB00C256A1 /* Int+Additions.swift */,
-				B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */,
-				B77CB9B0290141DA00C256A1 /* Assets.xcassets */,
+				B77CB9F429031A8300C256A1 /* DI */,
+				B77CB9F929031E7500C256A1 /* Extensions */,
+				B77CB9F829031E5D00C256A1 /* Model */,
 				B77CB9B2290141DA00C256A1 /* Preview Content */,
+				B77CB9F529031A9600C256A1 /* Usercases */,
 			);
 			path = "Rocket Focus 2";
 			sourceTree = "<group>";
@@ -152,6 +159,41 @@
 			path = "Rocket Focus 2UITests";
 			sourceTree = "<group>";
 		};
+		B77CB9F429031A8300C256A1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				B77CB9F22903196F00C256A1 /* AppDependencyContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		B77CB9F529031A9600C256A1 /* Usercases */ = {
+			isa = PBXGroup;
+			children = (
+				B77CB9E22902FB2600C256A1 /* DeviceEventObserver.swift */,
+				B77CB9D72901691300C256A1 /* TimeHandler.swift */,
+				B77CB9E42903126000C256A1 /* UserDefaultsRepository.swift */,
+			);
+			path = Usercases;
+			sourceTree = "<group>";
+		};
+		B77CB9F829031E5D00C256A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B77CB9F629031E5300C256A1 /* StorageKey.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B77CB9F929031E7500C256A1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B77CB9DB290169AB00C256A1 /* Int+Additions.swift */,
+				B77CB9DD290169BA00C256A1 /* TimeInterval+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,6 +212,8 @@
 			name = "Rocket Focus 2";
 			packageProductDependencies = (
 				B77CB9E02902F9B700C256A1 /* Then */,
+				B77CB9FB2903222700C256A1 /* Swinject */,
+				B77CB9FE2903223700C256A1 /* SwinjectAutoregistration */,
 			);
 			productName = "Rocket Focus 2";
 			productReference = B77CB9A9290141DA00C256A1 /* Rocket Focus 2.app */;
@@ -245,6 +289,8 @@
 			mainGroup = B77CB9A0290141DA00C256A1;
 			packageReferences = (
 				B77CB9DF2902F9B700C256A1 /* XCRemoteSwiftPackageReference "Then" */,
+				B77CB9FA2903222700C256A1 /* XCRemoteSwiftPackageReference "Swinject" */,
+				B77CB9FD2903223700C256A1 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
 			);
 			productRefGroup = B77CB9AA290141DA00C256A1 /* Products */;
 			projectDirPath = "";
@@ -290,12 +336,14 @@
 			files = (
 				B77CB9D82901691300C256A1 /* TimeHandler.swift in Sources */,
 				B77CB9E72903129D00C256A1 /* TimerViewModel.swift in Sources */,
+				B77CB9F32903196F00C256A1 /* AppDependencyContainer.swift in Sources */,
 				B77CB9AF290141DA00C256A1 /* ContentView.swift in Sources */,
+				B77CB9F729031E5300C256A1 /* StorageKey.swift in Sources */,
 				B77CB9DC290169AB00C256A1 /* Int+Additions.swift in Sources */,
 				B77CB9DE290169BA00C256A1 /* TimeInterval+Additions.swift in Sources */,
 				B77CB9E32902FB2600C256A1 /* DeviceEventObserver.swift in Sources */,
 				B77CB9AD290141DA00C256A1 /* Rocket_Focus_2App.swift in Sources */,
-				B77CB9E52903126000C256A1 /* UserRepository.swift in Sources */,
+				B77CB9E52903126000C256A1 /* UserDefaultsRepository.swift in Sources */,
 				B77CB9DA2901693700C256A1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,6 +679,22 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		B77CB9FA2903222700C256A1 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		B77CB9FD2903223700C256A1 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/SwinjectAutoregistration.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -638,6 +702,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B77CB9DF2902F9B700C256A1 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		B77CB9FB2903222700C256A1 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B77CB9FA2903222700C256A1 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		B77CB9FE2903223700C256A1 /* SwinjectAutoregistration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B77CB9FD2903223700C256A1 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
+			productName = SwinjectAutoregistration;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

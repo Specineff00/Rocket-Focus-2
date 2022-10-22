@@ -10,18 +10,21 @@ import Combine
 
 class TimerHandler: ObservableObject {
     @Published var secondsLeft = 0
-    private var cancellableTimer: Cancellable?
+    @Published var isTimerStopped = true
+    private var cancellableTimer: Cancellable? {
+        willSet { isTimerStopped = newValue == nil }
+    }
     private let timerPublusher = Timer.publish(every: 1, on: .main, in: .common)
-    var startDate: Date?
-    let userDefaults: any UserDefaultable
+    private var startDate: Date?
+    private let userDefaults: any UserDefaultable
     
-    internal init(userDefaults: any UserDefaultable = UserRepository()) {
+    internal init(userDefaults: any UserDefaultable = UserDefaultsRepository()) {
         self.userDefaults = userDefaults
     }
     
 
     // MARK: - Public
-    public func startTimer(duration: Int = Constants.pomodoroWorkMinutes.minutesInSeconds) {
+    public func startTimer(duration: Int) {
         startDate = nil
         secondsLeft = duration
         cancellableTimer = timerPublusher
@@ -42,17 +45,6 @@ class TimerHandler: ObservableObject {
         print("Timer cancelled")
     }
     
-    // MARK: - Private
-    private func decrementTime() {
-        guard secondsLeft > 0 else {
-            cancellableTimer = nil
-            print("Timer finished")
-            return
-        }
-        secondsLeft -= 1
-        print("Seconds left \(secondsLeft)")
-    }
-    
     //Saves the date so that it can be resumed when coming out of lock with the correct time
     func suspendTimer() {
         cancellableTimer = nil
@@ -64,7 +56,7 @@ class TimerHandler: ObservableObject {
         print("retrieved \(String(describing: retrievedDate))")
     }
     
-    func resumeTimer() {
+    func wakeTimer() {
         guard let retrievedDate = userDefaults.readDate(forKey: .lockDate) else {
             return
         }
@@ -75,17 +67,15 @@ class TimerHandler: ObservableObject {
         startTimer(duration: newSecondsLeft)
     }
     
+    // MARK: - Private
+    private func decrementTime() {
+        guard secondsLeft > 0 else {
+            cancellableTimer = nil
+            print("Timer finished")
+            return
+        }
+        secondsLeft -= 1
+        print("Seconds left \(secondsLeft)")
+    }
     
-}
-
-protocol UserDefaultable {
-    func saveValue(forKey key: StorageKey, value: Any)
-    func readValue<T>(forKey key: StorageKey) -> T?
-    func saveDate(forKey key: StorageKey, date: Date)
-    func readDate(forKey key: StorageKey) -> Date?
-    func removeDate()
-}
-
-enum StorageKey: String, CaseIterable {
-    case lockDate
 }

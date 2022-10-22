@@ -1,6 +1,24 @@
 {
   "pins" : [
     {
+      "identity" : "swinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/Swinject.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "ff1e34be3fe5da2129d5b05e150233a1d6cf9300"
+      }
+    },
+    {
+      "identity" : "swinjectautoregistration",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/SwinjectAutoregistration.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "41de6785fb640cafbb38b8b9e9047c80eebfaaa7"
+      }
+    },
+    {
       "identity" : "then",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devxoul/Then.git",

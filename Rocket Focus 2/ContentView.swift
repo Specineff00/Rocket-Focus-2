@@ -32,7 +32,7 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @ObservedObject var timerHandler: TimerHandler
+    @StateObject var timerViewModel = AppDependencyContainer.resolve(TimerViewModel.self)
     let deviceLockHandler = DeviceEventObserver()
     @State var timerText = ""
     
@@ -41,17 +41,17 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text(String(timerHandler.secondsLeft))
+            Text(timerViewModel.timerText)
             Button("Start") {
-                timerHandler.startTimer()
+                timerViewModel.startTimer()
             }.padding()
             Button("Stop") {
-                timerHandler.cancelTimer()
+                timerViewModel.cancelTimer()
             }.padding()
         }
         .padding()
         .onAppear {
-
+            timerViewModel.bind()
         }
     }    
 }
@@ -59,27 +59,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(
-            timerHandler: TimerHandler(userDefaults: MockUserDefaults())
-        )
-    }
-}
-
-struct MockUserDefaults: UserDefaultable {
-    func saveValue(forKey key: StorageKey, value: Any) {
-    }
-    
-    func readValue<T>(forKey key: StorageKey) -> T? {
-        return nil
-    }
-    
-    func saveDate(forKey key: StorageKey, date: Date) {
-    }
-    
-    func readDate(forKey key: StorageKey) -> Date? {
-        return nil
-    }
-    
-    func removeDate() {
+        ContentView()
     }
 }

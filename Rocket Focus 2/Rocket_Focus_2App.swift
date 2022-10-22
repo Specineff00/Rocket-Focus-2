@@ -14,11 +14,7 @@ struct Rocket_Focus_2App: App {
         
     var body: some Scene {
         WindowGroup {
-            ContentView(
-                timerHandler: TimerHandler(
-                    userDefaults: UserRepository()
-                )
-            )
+            ContentView()
         }
     }
 }

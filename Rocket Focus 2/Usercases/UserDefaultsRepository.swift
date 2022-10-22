@@ -1,5 +1,5 @@
 //
-//  UserRepository.swift
+//  UserDefaultsRepository.swift
 //  Rocket Focus 2
 //
 //  Created by Yogesh Nikash Ramsorrun on 21/10/2022.
@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct UserRepository: UserDefaultable {
+protocol UserDefaultable {
+    func saveValue(forKey key: StorageKey, value: Any)
+    func readValue<T>(forKey key: StorageKey) -> T?
+    func saveDate(forKey key: StorageKey, date: Date)
+    func readDate(forKey key: StorageKey) -> Date?
+    func removeDate()
+}
+
+struct UserDefaultsRepository: UserDefaultable {
     
     let userDefaults: UserDefaults
     
@@ -41,5 +49,25 @@ struct UserRepository: UserDefaultable {
     
     func removeDate() {
         userDefaults.removeObject(forKey: StorageKey.lockDate.rawValue)
+    }
+}
+
+
+struct MockUserDefaults: UserDefaultable {
+    func saveValue(forKey key: StorageKey, value: Any) {
+    }
+    
+    func readValue<T>(forKey key: StorageKey) -> T? {
+        return nil
+    }
+    
+    func saveDate(forKey key: StorageKey, date: Date) {
+    }
+    
+    func readDate(forKey key: StorageKey) -> Date? {
+        return nil
+    }
+    
+    func removeDate() {
     }
 }
